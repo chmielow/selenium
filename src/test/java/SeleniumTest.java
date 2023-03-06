@@ -1,10 +1,8 @@
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.InvalidArgumentException;
-import org.openqa.selenium.JavascriptException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SeleniumTest {
@@ -15,12 +13,18 @@ public class SeleniumTest {
         //WebDriver driver = new FirefoxDriver();
         WebDriver driver = getDriver("chrome");
         driver.manage().window().maximize();
-        Dimension windowSize = new Dimension(300,300);
-        driver.manage().window().setSize(windowSize);
         driver.get("https://www.google.com");
-        JavascriptException executor = (JavascriptException) driver;
+        // zanalezienie przcisku
+        WebElement agreeButton = driver.findElement(By.xpath("//div[text()='Zaakceptuj wszystko']"));
+        agreeButton.click(); // klikniecie przycisku
+        WebElement searchField = driver.findElement(By.name("q"));
+        searchField.sendKeys("Selenium");
+        searchField.sendKeys(Keys.ENTER);
+        WebElement result = driver.findElement(By.xpath("//a[contains(@href,'selenium.dev')]//h3"));
+        //Assert.assertTrue(result.isDisplayed());
+        //JavascriptException executor = (JavascriptException) driver;
         //driver.quit(); //zamyka wszystkie okna
-        driver.close(); // zamyka pierwotne okno potencjalne nowe okno jest dalej otwarte
+        //driver.close(); // zamyka pierwotne okno potencjalne nowe okno jest dalej otwarte
     }
     public WebDriver getDriver(String browser){
         if(browser == "chrome"){
