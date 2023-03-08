@@ -13,26 +13,29 @@ public class XpathTest {
         driver.get("https://testeroprogramowania.github.io/selenium/basics.html");
 
         //clickOnMe
-        By buttonId = By.id("clickOnMe");
+        //By buttonId = By.xpath("/html/body/button[@id='clickOnMe']");
+        By buttonId = By.xpath("//button[@id='clickOnMe']");
         WebElement clickOnMeButton = driver.findElement(buttonId);
 
         //fname
-        By firstName = By.name("fname");
+        By firstName = By.xpath("//input[@name='fname']");
         WebElement firstNameInput = driver.findElement(firstName);
 
-        By paraHidden = By.className("topSecret");
+        By paraHidden = By.xpath("//p[@class='topSecret']");
         WebElement parametrHidden = driver.findElement(paraHidden);
 
-        By input = By.tagName("input");
+        By input = By.xpath("//input");
         WebElement inputLocator = driver.findElement(input);
         inputLocator.sendKeys("Pierwszy");
 
         List<WebElement> inputs = driver.findElements(input);
         System.out.println(inputs.size());
 
-        By linkText = By.linkText("Visit W3Schools.com!");
-        By partLink = By.partialLinkText("Visit W3Schools");
-        WebElement linkTextSchool = driver.findElement(partLink);
+        By linkText = By.xpath("//a[text()='Visit W3Schools.com!']");
+        By partLink = By.xpath("//a[contains(text(),'W3Schools')]");
+        WebElement linkTextSchool = driver.findElement(linkText);
+        WebElement partLinkTextSchool = driver.findElement(partLink);
+
 
         By fullPath = By.xpath("/html/body/div/ul");
         driver.findElement(fullPath);
