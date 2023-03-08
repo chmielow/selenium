@@ -16,6 +16,23 @@ public class CssSelectorTest {
         driver.findElement(cssTagName).sendKeys("Pierwszy");
         By cssName = By.cssSelector("[name='fname']");
         driver.findElement(cssName);
+        By all = By.cssSelector("*");
+        driver.findElement(all);
+        By ulInsideDiv = By.cssSelector("div ul");
+        By trTable = By.cssSelector("table tr");
+        By trInBody = By.cssSelector("tbody tr");
+        driver.findElement(ulInsideDiv);
+        driver.findElement(trTable);
+        driver.findElement(trInBody);
+        By firstChildUlInDiv = By.cssSelector("div > ul");
+        By firstChildTrInTbody = By.cssSelector("tbody > tr");
+        driver.findElement(firstChildTrInTbody);
+        driver.findElement(firstChildUlInDiv);
+        By formNextToLabel = By.cssSelector("label + form");
+        By allFormNextToLabel = By.cssSelector("label ~ form");
+        driver.findElement(formNextToLabel);
+        driver.findElement(allFormNextToLabel);
+
 
     }
 }
