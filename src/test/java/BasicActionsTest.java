@@ -14,7 +14,12 @@ public class BasicActionsTest {
         WebElement basicLink = driver.findElement(By.linkText("Podstawowa strona testowa"));
         basicLink.click();
 
-        driver.findElement(By.id("fname")).click();
+        driver.findElement(By.id("fname")).sendKeys("Marcin");
+        driver.findElement(By.name("username")).clear();
+        driver.findElement(By.name("username")).sendKeys("admin");
+
+
+
 
     }
 }
