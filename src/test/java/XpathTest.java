@@ -55,5 +55,15 @@ public class XpathTest {
         By elementWithAttribute = By.xpath("//*[@name]");
         driver.findElement(elementWithAttribute);
 
+        By attrEq = By.xpath("//button[@id='clickOnMe']");
+        By attrNotEq = By.xpath("//*[@id!='clickOnMe']");
+        By attrCont = By.xpath("//*[contains(@name,'ame')]");
+        By startsWith = By.xpath("//*[starts-with(@name,'user')]");
+
+        driver.findElement(attrEq);
+        driver.findElement(attrNotEq);
+        driver.findElement(attrCont);
+        driver.findElement(startsWith);
+
     }
 }
