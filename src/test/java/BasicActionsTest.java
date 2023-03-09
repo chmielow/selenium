@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,8 +16,10 @@ public class BasicActionsTest {
         basicLink.click();
 
         driver.findElement(By.id("fname")).sendKeys("Marcin");
-        driver.findElement(By.name("username")).clear();
-        driver.findElement(By.name("username")).sendKeys("admin");
+        WebElement userNameInput = driver.findElement(By.name("username"));
+        userNameInput.clear();
+        userNameInput.sendKeys("admin");
+        userNameInput.sendKeys(Keys.TAB);
 
 
 
