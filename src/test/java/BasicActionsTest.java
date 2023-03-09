@@ -16,10 +16,15 @@ public class BasicActionsTest {
         basicLink.click();
 
         driver.findElement(By.id("fname")).sendKeys("Marcin");
+
         WebElement userNameInput = driver.findElement(By.name("username"));
         userNameInput.clear();
         userNameInput.sendKeys("admin");
         userNameInput.sendKeys(Keys.TAB);
+
+        driver.findElement(By.cssSelector("[type='checkbox']")).click();
+        driver.findElement(By.cssSelector("[value='male']")).click();
+
 
 
 
