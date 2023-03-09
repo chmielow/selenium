@@ -65,5 +65,23 @@ public class XpathTest {
         driver.findElement(attrCont);
         driver.findElement(startsWith);
 
+        By child = By.xpath("//div/child::ul");
+        By desc = By.xpath("//div/descendant::ul");
+        By parent = By.xpath("//div/../..");
+        By asc = By.xpath("//div/ancestor::*");
+        By foll = By.xpath("//img/following::*");
+        By follSib = By.xpath("//img/following-sibling::*");
+        By prec = By.xpath("//img/preceding::*");
+        By precSib = By.xpath("//img/preceding-sibling::*");
+
+        driver.findElement(child);
+        driver.findElement(desc);
+        driver.findElement(parent);
+        driver.findElement(asc);
+        driver.findElement(foll);
+        driver.findElement(follSib);
+        driver.findElement(prec);
+        driver.findElement(precSib);
+
     }
 }
