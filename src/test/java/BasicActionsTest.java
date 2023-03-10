@@ -23,6 +23,7 @@ public class BasicActionsTest {
         WebElement userNameInput = driver.findElement(By.name("username"));
         userNameInput.clear();
         userNameInput.sendKeys("admin");
+        System.out.println(userNameInput.getAttribute("value"));
         userNameInput.sendKeys(Keys.TAB);
 
         driver.findElement(By.cssSelector("[type='checkbox']")).click();
