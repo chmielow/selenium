@@ -1,3 +1,4 @@
+import com.beust.ah.A;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -27,7 +28,9 @@ public class UploadTest {
         String fileName = "beforeUpload" + randomNumber + ".png";
         FileUtils.copyFile(before, new File("src/test/resources/" + fileName));
         driver.findElement(By.id("myFile")).sendKeys("C:\\Users\\Marcin\\Downloads\\Aplikacja.txt");
-
+        Actions actions = new Actions(driver);
+        //actions.contextClick().perform();
+        actions.contextClick(driver.findElement(By.id("myFile"))).perform();
 
     }
 }
