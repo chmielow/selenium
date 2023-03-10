@@ -44,6 +44,12 @@ public class BasicActionsTest {
         selectChecker.valuesCheck("Audi",select);
         selectChecker.valuesCheck("Jeep",select);
 
+        WebElement para = driver.findElement(By.cssSelector(".topSecret"));
+        //System.out.println("By text :" + para.getText());
+        //System.out.println("By attr value :" + para.getAttribute("value"));
+        System.out.println("By attr text content :" + para.getAttribute("textContent"));
+
+
 
     }
 }
