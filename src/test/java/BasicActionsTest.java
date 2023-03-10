@@ -28,22 +28,20 @@ public class BasicActionsTest {
         driver.findElement(By.cssSelector("[type='checkbox']")).click();
         driver.findElement(By.cssSelector("[value='male']")).click();
 
-        //WebElement selectCar = driver.findElement(By.cssSelector("[value='saab']"));
-        //selectCar.click();
+        WebElement selectCar = driver.findElement(By.cssSelector("[value='saab']"));
+        selectCar.click();
 
-        //WebElement select = driver.findElement(By.cssSelector("select"));
-        Select cars = new Select(driver.findElement(By.cssSelector("select")));
+        WebElement select = driver.findElement(By.cssSelector("select"));
+        Select cars = new Select(select);
         cars.selectByValue("volvo");
         List<WebElement> options = cars.getOptions();
-        for (WebElement option : options){
+        for (WebElement option : options) {
             System.out.println(option.getText());
         }
 
-
-
-
-
-
+        SelectChecker selectChecker = new SelectChecker();
+        selectChecker.valuesCheck("Audi",select);
+        selectChecker.valuesCheck("Jeep",select);
 
 
     }
