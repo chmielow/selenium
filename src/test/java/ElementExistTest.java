@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
@@ -28,10 +29,13 @@ public class ElementExistTest {
         System.out.println(driver.findElement(By.tagName("button")).isEnabled());
         // aby element byl klikalny musi wracac metody isDisplayed i isEnabled jako true
 
+        System.out.println("=====================================================");
+        WebElement checkbox = driver.findElement(By.cssSelector("[type='checkbox']"));
+        System.out.println(checkbox.isSelected());
+        checkbox.click();
+        System.out.println(checkbox.isSelected());
 
 
-        //driver.findElement(By.tagName("p"));
-        //driver.findElement(By.id("topSecret"));
 
 
     }
