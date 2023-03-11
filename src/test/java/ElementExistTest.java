@@ -22,7 +22,12 @@ public class ElementExistTest {
         System.out.println(elementExistSecond(By.id("topSecret")));
 
         System.out.println(driver.findElement(By.tagName("p")).isDisplayed());
+
         System.out.println(driver.findElement(By.tagName("button")).isDisplayed());
+
+        System.out.println(driver.findElement(By.tagName("button")).isEnabled());
+        // aby element byl klikalny musi wracac metody isDisplayed i isEnabled jako true
+
 
 
         //driver.findElement(By.tagName("p"));
