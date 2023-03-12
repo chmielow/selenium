@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -59,9 +60,17 @@ public class FirstTest extends BaseTest {
 
         waitForElementExist(By.cssSelector("p"));
 
-        String para = driver.findElement(By.cssSelector("p")).getText();
-        Assert.assertEquals(para,"Dopiero się pojawiłem!");
+        WebElement para = driver.findElement(By.cssSelector("p"));
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertEquals(para.isDisplayed(),true);
+        softAssert.assertTrue(para.isDisplayed(), "element is not displayed");
+        softAssert.assertTrue(para.getText().startsWith("Dopiero"));
+        softAssert.assertFalse(para.getText().startsWith("Pojawiłem"));
+        //softAssert.assertEquals(para.getText(), "Dopiero","tesksty sa rozne");
+        //.assertEquals(para.getText(),"Dopiero się ", "druga assercja");
         driver.quit();
+        softAssert.assertAll();
 
     }
 
