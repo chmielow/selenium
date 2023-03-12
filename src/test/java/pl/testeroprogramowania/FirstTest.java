@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -17,7 +16,7 @@ import java.util.List;
 public class FirstTest extends BaseTest {
 
     WebDriver driver;
-    @Test @Ignore
+    @Test
     public void firstTest(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -33,8 +32,15 @@ public class FirstTest extends BaseTest {
 
         waitForElementExist(By.cssSelector("p"));
 
-        String para = driver.findElement(By.cssSelector("p")).getText();
-        Assert.assertEquals(para,"Dopiero się pojawiłem!");
+        WebElement para = driver.findElement(By.cssSelector("p"));
+        Assert.assertEquals(para.isDisplayed(),true);
+        Assert.assertTrue(para.isDisplayed(), "element is not displayed");
+        Assert.assertTrue(para.getText().startsWith("Dopiero"));
+        Assert.assertFalse(para.getText().startsWith("Pojawiłem"));
+
+        Assert.assertEquals(para.getText(),"Dopiero się pojawiłem!");
+        //Assert.assertEquals(para.getText(), "Dopiero","tesksty sa rozne");
+
         driver.quit();
     }
     @Test
