@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class SecondTest extends BaseTest {
+public class FirstTest extends BaseTest {
 
     WebDriver driver;
     @Test
@@ -20,7 +20,7 @@ public class SecondTest extends BaseTest {
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
         WebElement button = driver.findElement(By.tagName("button"));
@@ -34,7 +34,6 @@ public class SecondTest extends BaseTest {
         Assert.assertEquals(para,"Dopiero się pojawiłem!");
 
     }
-    @Test
     public void secondTest(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -52,7 +51,6 @@ public class SecondTest extends BaseTest {
 
         String para = driver.findElement(By.cssSelector("p")).getText();
         Assert.assertEquals(para,"Dopiero się pojawiłem!");
-        driver.quit();
 
     }
 
@@ -63,14 +61,14 @@ public class SecondTest extends BaseTest {
         wait.pollingEvery(Duration.ofSeconds(1));
 
         wait.until((driver) -> {
-            List<WebElement> elements = driver.findElements(locator);
-            if(elements.size()>0){
-                System.out.println("element jest na stronie");
-                return true;
-            } else {
-                System.out.println("elementu nie ma na stronie");
-                return false;
-            }
+                List<WebElement> elements = driver.findElements(locator);
+                if(elements.size()>0){
+                    System.out.println("element jest na stronie");
+                    return true;
+                } else {
+                    System.out.println("elementu nie ma na stronie");
+                    return false;
+                }
 
         });
     }
