@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 
 
 import java.time.Duration;
+import java.util.List;
+import java.util.function.Function;
 
 public class WaitTest {
 
@@ -29,14 +31,34 @@ public class WaitTest {
         //Thread.sleep(5000);
         FluentWait<WebDriver> wait = new FluentWait<>(driver);
         wait.ignoring(NoSuchElementException.class);
+        //wait.withTimeout(Duration.ofSeconds(10));
+        //wait.pollingEvery(Duration.ofSeconds(1)); //interwał
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("p")));
+        //driver.findElement(By.cssSelector("p"));
+
+        waitForElementExist(By.cssSelector("p"));
+
+    }
+
+    public void waitForElementExist(By locator){
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.ignoring(NoSuchElementException.class);
         wait.withTimeout(Duration.ofSeconds(10));
-        wait.pollingEvery(Duration.ofSeconds(1)); //interwał
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("p")));
-        driver.findElement(By.cssSelector("p"));
+        wait.pollingEvery(Duration.ofSeconds(1));
 
-
-
-
+        wait.until(new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver webDriver) {
+                List<WebElement> elements = driver.findElements(locator);
+                if(elements.size()>0){
+                    System.out.println("element jest na stronie");
+                    return true;
+                } else {
+                    System.out.println("elementu nie ma na stronie");
+                    return false;
+                }
+            }
+        });
 
     }
 
