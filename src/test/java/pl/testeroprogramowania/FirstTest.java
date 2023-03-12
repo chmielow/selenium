@@ -8,16 +8,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
 
+@Listeners(value = {SampleTestListener.class})
 public class FirstTest extends BaseTest {
 
     WebDriver driver;
-    @Test
+    @Test @Ignore
     public void firstTest(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
