@@ -1,3 +1,5 @@
+package pl.testeroprogramowania;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +13,7 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.List;
 
-public class SecondTest extends BaseTest {
+public class FirstTest extends BaseTest {
 
     WebDriver driver;
     @Test
@@ -20,19 +22,19 @@ public class SecondTest extends BaseTest {
         options.addArguments("--remote-allow-origins=*");
 
         driver = new ChromeDriver(options);
-        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
         WebElement button = driver.findElement(By.tagName("button"));
         button.click();
         //Thread.sleep(5000);
-        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        //FluentWait<WebDriver> wait = new FluentWait<>(driver);
 
         waitForElementExist(By.cssSelector("p"));
 
         String para = driver.findElement(By.cssSelector("p")).getText();
         Assert.assertEquals(para,"Dopiero się pojawiłem!");
-
+        driver.quit();
     }
     @Test
     public void secondTest(){
@@ -46,7 +48,7 @@ public class SecondTest extends BaseTest {
         WebElement button = driver.findElement(By.tagName("button"));
         button.click();
         //Thread.sleep(5000);
-        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        //<WebDriver> wait = new FluentWait<>(driver);
 
         waitForElementExist(By.cssSelector("p"));
 
@@ -63,14 +65,14 @@ public class SecondTest extends BaseTest {
         wait.pollingEvery(Duration.ofSeconds(1));
 
         wait.until((driver) -> {
-            List<WebElement> elements = driver.findElements(locator);
-            if(elements.size()>0){
-                System.out.println("element jest na stronie");
-                return true;
-            } else {
-                System.out.println("elementu nie ma na stronie");
-                return false;
-            }
+                List<WebElement> elements = driver.findElements(locator);
+                if(elements.size()>0){
+                    System.out.println("element jest na stronie");
+                    return true;
+                } else {
+                    System.out.println("elementu nie ma na stronie");
+                    return false;
+                }
 
         });
     }
