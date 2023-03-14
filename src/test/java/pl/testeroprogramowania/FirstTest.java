@@ -20,13 +20,11 @@ import java.util.List;
 public class FirstTest extends BaseTest {
 
     WebDriver driver;
-    @Test @Ignore
+    @Test
     public void firstTest(){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+        driver = DriverFactory.getDriver();
 
-        driver = new ChromeDriver(options);
-       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
 
         WebElement button = driver.findElement(By.tagName("button"));
@@ -47,7 +45,7 @@ public class FirstTest extends BaseTest {
 
         driver.quit();
     }
-    @Test
+    @Test @Ignore
     public void secondTest(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -71,7 +69,7 @@ public class FirstTest extends BaseTest {
         softAssert.assertTrue(para.getText().startsWith("Dopiero"));
         softAssert.assertFalse(para.getText().startsWith("Pojawiłem"));
         //softAssert.assertEquals(para.getText(), "Dopiero","tesksty sa rozne");
-        //.assertEquals(para.getText(),"Dopiero się ", "druga assercja");
+        //softAssert.assertEquals(para.getText(),"Dopiero się ", "druga assercja");
         driver.quit();
         softAssert.assertAll();
 
